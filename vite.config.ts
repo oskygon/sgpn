@@ -8,7 +8,7 @@ export default defineConfig(({ mode }) => ({
   base: mode === 'development' ? '/' : '/sgpn/',
 
   server: {
-    host: "::",
+    host: "localhost",
     port: 8080,
   },
   plugins: [

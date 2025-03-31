@@ -28,6 +28,7 @@ const DocumentoImprimible: React.FC<DocumentoImprimibleProps> = ({
               size: A4; 
               margin: 2cm; 
             }
+              
             body { 
               font-family: Arial, sans-serif; 
               margin: 0; 
@@ -35,6 +36,7 @@ const DocumentoImprimible: React.FC<DocumentoImprimibleProps> = ({
               font-size: 10px;
               line-height: 1.3;
             }
+              
             .documento { 
               width: 100%;
               max-width: 21cm;
@@ -46,7 +48,8 @@ const DocumentoImprimible: React.FC<DocumentoImprimibleProps> = ({
               text-align: center;
               margin-bottom: 15px;
               border-bottom: 1px solid #000;
-              padding-bottom: 10px;
+              padding: 30px;
+              color:black;
             }
             .titulo { 
               font-size: 20px;
@@ -129,6 +132,7 @@ const DocumentoImprimible: React.FC<DocumentoImprimibleProps> = ({
             @media print {
               .no-print { display: none; }
               body { margin: 0; padding: 0; }
+              
             }
           </style>
         </head>
@@ -189,7 +193,7 @@ const DocumentoImprimible: React.FC<DocumentoImprimibleProps> = ({
       { etiqueta: "Sexo", valor: paciente.sexo === 'M' ? 'Masculino' : paciente.sexo === 'F' ? 'Femenino' : paciente.sexo || '-' },
       { etiqueta: "Historia Clínica", valor: paciente.numeroHistoriaClinica || '-' }
     ].map(({ etiqueta, valor }, index) => (
-      <div key={index} className="flex flex-col items-start border p-2 rounded-lg bg-gray-50">
+      <div key={index} className="flex flex-col items-start  p-2 rounded-lg bg-gray-50">
         <span className="font-semibold text-gray-700">{etiqueta}:</span>
         <span className="text-gray-600">{valor}</span>
       </div>
@@ -198,45 +202,6 @@ const DocumentoImprimible: React.FC<DocumentoImprimibleProps> = ({
 </div>
 
 
-            {/* <div className="seccion">
-              <div className="seccion-titulo">DATOS DEL RECIÉN NACIDO</div>
-              <div className="grid-container">
-                <div className="fila">
-                  <span className="etiqueta">Nombre</span>
-                  <span className="valor">{paciente.nombre} {paciente.apellido}</span>
-                </div>
-                <div className="fila">
-                  <span className="etiqueta">Fecha y Hora de Nacimiento</span>
-                  <span className="valor">{formatDate(paciente.fechaNacimiento)} {paciente.horaNacimiento}hs</span>
-                </div>
-                <div className="fila">
-                  <span className="etiqueta">Sexo</span>
-                  <span className="valor">{paciente.sexo === 'M' ? 'Masculino' : paciente.sexo === 'F' ? 'Femenino' : paciente.sexo || '-'}</span>
-                </div>
-                <div className="fila">
-                  <span className="etiqueta">Historia Clínica</span>
-                  <span className="valor">{paciente.numeroHistoriaClinica || '-'}</span>
-                </div>
-              </div>
-            </div> */}
-
-            {/* <div className="seccion">
-              <div className="seccion-titulo">MEDIDAS ANTROPOMÉTRICAS</div>
-              <div className="grid-container-3">
-                <div className="fila">
-                  <span className="etiqueta">Peso</span>
-                  <span className="valor">{paciente.peso} g</span>
-                </div>
-                <div className="fila">
-                  <span className="etiqueta">Talla</span>
-                  <span className="valor">{paciente.talla} cm</span>
-                </div>
-                <div className="fila">
-                  <span className="etiqueta">PC</span>
-                  <span className="valor">{paciente.perimetroCefalico} cm</span>
-                </div>
-              </div>
-            </div> */}
 
 <div className="seccion">
   <div className="seccion-titulo">MEDIDAS ANTROPOMÉTRICAS</div>
@@ -246,7 +211,7 @@ const DocumentoImprimible: React.FC<DocumentoImprimibleProps> = ({
       { etiqueta: "Talla", valor: paciente.talla ? `${paciente.talla} cm` : '-' },
       { etiqueta: "PC", valor: paciente.perimetroCefalico ? `${paciente.perimetroCefalico} cm` : '-' }
     ].map(({ etiqueta, valor }, index) => (
-      <div key={index} className="flex flex-col items-start border p-2 rounded-lg bg-gray-50">
+      <div key={index} className="flex flex-col items-start  p-2 rounded-lg bg-gray-50">
         <span className="font-semibold text-gray-700">{etiqueta}:</span>
         <span className="text-gray-600">{valor}</span>
       </div>
@@ -268,7 +233,7 @@ const DocumentoImprimible: React.FC<DocumentoImprimibleProps> = ({
       { etiqueta: "Líquido Amniótico", valor: paciente.liquidoAmniotico || '-' },
       { etiqueta: "Clasificación del RN", valor: paciente.clasificacion || '-' }
     ].map(({ etiqueta, valor }, index) => (
-      <div key={index} className="flex flex-col items-start border p-2 rounded-lg bg-gray-50">
+      <div key={index} className="flex flex-col items-start  p-2 rounded-lg bg-gray-50">
         <span className="font-semibold text-gray-700">{etiqueta}:</span>
         <span className="text-gray-600">{valor}</span>
       </div>
@@ -277,54 +242,7 @@ const DocumentoImprimible: React.FC<DocumentoImprimibleProps> = ({
 </div>
 
 
-            {/* <div className="seccion">
-              <div className="seccion-titulo">DATOS DEL PARTO</div>
-              <div className="grid-container-3">
-                <div className="fila">
-                  <span className="etiqueta">Edad Gestacional</span>
-                  <span className="valor">{paciente.edadGestacional || '-'} semanas</span>
-                </div>
-                <div className="fila">
-                  <span className="etiqueta">APGAR</span>
-                  <span className="valor">{paciente.apgar || '-'}</span>
-                </div>
-                <div className="fila">
-                  <span className="etiqueta">Nacido por</span>
-                  <span className="valor">{paciente.nacidoPor || '-'}</span>
-                </div>
-                <div className="fila">
-                  <span className="etiqueta">Presentación</span>
-                  <span className="valor">{paciente.presentacion || '-'}</span>
-                </div>
-                <div className="fila">
-                  <span className="etiqueta">Líquido Amniótico</span>
-                  <span className="valor">{paciente.liquidoAmniotico || '-'}</span>
-                </div>
-                <div className="fila">
-                  <span className="etiqueta">Clasificación del RN</span>
-                  <span className="valor">{paciente.clasificacion || '-'}</span>
-                </div>
-              </div>
-            </div> */}
-
-            {/* <div className="seccion">
-              <div className="seccion-titulo">VACUNACIÓN Y PESQUISA</div>
-              <div className="grid-container">
-                <div className="fila">
-                  <span className="etiqueta">HBsAg</span>
-                  <span className="valor">{paciente.vacunacionHbsag ? ` ${formatDate(paciente.fechaHbsag) ||  ''}( Lote:${paciente.loteHbsag || '-'})` : 'No'}</span>
-                </div>
-                <div className="fila">
-                  <span className="etiqueta">BCG</span>
-                  <span className="valor">{paciente.vacunacionBcg ? ` ${formatDate(paciente.fechaBcg) || ''}( Lote:${paciente.loteBcg || '-'})` : 'No'}</span>
-                </div>
-                <div className="fila">
-                  <span className="etiqueta">Pesquisa Metabólica</span>
-                  <span className="valor">{paciente.pesquisaMetabolica ? `${formatDate(paciente.fechaPesquisa) || ''} ${formatDate(paciente.horaPesquisa) || ''} (Protocolo: ${paciente.protocoloPesquisa || '-'})` : 'No'}</span>
-                </div>
-                
-              </div>
-            </div> */}
+           
 
 <div className="seccion">
   <div className="seccion-titulo">VACUNACIÓN Y PESQUISA</div>
@@ -349,7 +267,7 @@ const DocumentoImprimible: React.FC<DocumentoImprimibleProps> = ({
           : 'No' 
       }
     ].map(({ etiqueta, valor }, index) => (
-      <div key={index} className="flex flex-col items-start border p-2 rounded-lg bg-gray-50">
+      <div key={index} className="flex flex-col items-start  p-2 rounded-lg bg-gray-50">
         <span className="font-semibold text-gray-700">{etiqueta}:</span>
         <span className="text-gray-600">{valor || '-'}</span>
       </div>
@@ -370,7 +288,7 @@ const DocumentoImprimible: React.FC<DocumentoImprimibleProps> = ({
       { etiqueta: "Hematocrito", valor: paciente.hematocritoValor ? `${paciente.hematocritoValor}%` : '-' },
       { etiqueta: "Otros laboratorios", valor: paciente.laboratorios }
     ].map(({ etiqueta, valor }, index) => (
-      <div key={index} className="flex flex-col items-start border p-2 rounded-lg bg-gray-50">
+      <div key={index} className="flex flex-col items-start  p-2 rounded-lg bg-gray-50">
         <span className="font-semibold text-gray-700">{etiqueta}:</span>
         <span className="text-gray-600">{valor || '-'}</span>
       </div>
@@ -379,63 +297,7 @@ const DocumentoImprimible: React.FC<DocumentoImprimibleProps> = ({
 </div>
 
 
-            {/* <div className="seccion">
-              <div className="seccion-titulo">LABORATORIOS</div>
-              <div className="grid-container-3">
-                <div className="fila">
-                  <span className="etiqueta">Grupo y Factor del RN</span>
-                  <span className="valor"> {paciente.grupoFactorRn || '-'}</span>
-                </div>
-                <div className="fila">
-                  <span className="etiqueta">Grupo y Factor Materno</span>
-                  <span className="valor"> {paciente.grupoFactorMaterno || '-'}</span>
-                </div>
-                <div className="fila">
-                  <span className="etiqueta">PCD</span>
-                  <span className="valor"> {paciente.pcd || '-'}</span>
-                </div>
-                <div className="fila">
-                  <span className="etiqueta">Bilirrubina Total</span>
-                  <span className="valor"> {paciente.bilirrubinaTotalValor || '-'}mg/dl</span>
-                </div>
-                <div className="fila">
-                  <span className="etiqueta">Bilirrubina Directa</span>
-                  <span className="valor"> {paciente.bilirrubinaDirectaValor || '-'}mg/dl</span>
-                </div>
-                <div className="fila">
-                  <span className="etiqueta">Hematocrito</span>
-                  <span className="valor"> {paciente.hematocritoValor || '-'}%</span>
-                </div>
-              </div>
-            </div>
-                <div className="fila">
-                  <span className="etiqueta">Otros laboratorios</span>
-                  <span className="valor"> {paciente.laboratorios || '-'}</span>
-                </div> */}
-
-                
-
-{/* <div className="seccion">
-  <div className="seccion-titulo">SEROLOGIAS MATERNAS</div>
-  <div className="grid grid-cols-3 gap-4 p-2">
-    {[
-      { etiqueta: "SarsCov2 PCR", valor: paciente.sarsCov2, fecha: paciente?.fechaCovid },
-      { etiqueta: "Chagas", valor: paciente.chagas, fecha: paciente?.fechaChagas },
-      { etiqueta: "Toxoplasmosis", valor: paciente.toxoplasmosis, fecha: paciente?.fechaToxo },
-      { etiqueta: "HIV", valor: paciente.hiv, fecha: paciente?.fechaHIV },
-      { etiqueta: "VDRL", valor: paciente.vdrl, fecha: paciente?.fechaVDRL },
-      { etiqueta: "Hepatitis B", valor: paciente.hepatitisB, fecha: paciente?.fechaHB },
-      { etiqueta: "EGB", valor: paciente.egb, fecha: paciente?.fechaEGB },
-      { etiqueta: "Profilaxis ATB", valor: paciente.profilaxisATB, fecha: null }
-    ].map(({ etiqueta, valor, fecha }, index) => (
-      <div key={index} className="flex flex-col items-start border p-2 rounded-lg bg-gray-50">
-        <span className="font-semibold text-gray-700">{etiqueta}:</span>
-        <span className="text-gray-600">{valor || '-'}</span>
-        <span className="text-gray-500 text-sm">{fecha ? formatDate(fecha) : '-'}</span>
-      </div>
-    ))}
-  </div>
-</div> */}
+            
 
 <div className="seccion">
   <div className="seccion-titulo">SEROLOGIAS MATERNAS</div>
@@ -450,10 +312,10 @@ const DocumentoImprimible: React.FC<DocumentoImprimibleProps> = ({
       { etiqueta: "EGB", valor: paciente.egb, fecha: paciente?.fechaEGB },
       { etiqueta: "Profilaxis ATB", valor: paciente.profilaxisATB, fecha: null }
     ].map(({ etiqueta, valor, fecha }, index) => (
-      <div key={index} className="flex flex-col items-start border p-2 rounded-lg bg-gray-50">
+      <div key={index} className="flex flex-col items-start  p-2 rounded-lg bg-gray-50">
         <span className="font-semibold text-gray-700">{etiqueta}:</span>
         <span className="text-gray-600">{valor || '-'}</span>
-        <span className="text-gray-500 text-sm">{fecha ? formatDate(fecha) : '-'}</span>
+        <span className="text-gray-500 ">{fecha ? formatDate(fecha) : '-'}</span>
       </div>
     ))}
   </div>
@@ -470,7 +332,7 @@ const DocumentoImprimible: React.FC<DocumentoImprimibleProps> = ({
         { etiqueta: "Peso Egreso", valor: `${paciente.pesoEgreso || '-'} g` },
         { etiqueta: "% descenso", valor: calcularPorcentajeDiferenciaPeso() }
       ].map(({ etiqueta, valor }, index) => (
-        <div key={index} className="flex flex-col items-start border p-2 rounded-lg bg-gray-50">
+        <div key={index} className="flex flex-col items-start  p-2 rounded-lg bg-gray-50">
           <span className="font-semibold text-gray-700">{etiqueta}:</span>
           <span className="text-gray-600">{valor}</span>
         </div>
@@ -525,7 +387,7 @@ const DocumentoImprimible: React.FC<DocumentoImprimibleProps> = ({
   {/* Contenedor de firmas */}
   <div className="grid grid-cols-2 gap-4 p-4">
     {/* Firma del familiar */}
-    <div className="flex flex-col justify-end border p-4 rounded-lg bg-gray-50 h-32">
+    <div className="flex flex-col justify-end  p-4 rounded-lg bg-gray-50 h-32">
       <div className="flex-grow"></div> {/* Espacio superior para firmar */}
       <div className="text-center font-semibold border-t pt-2">Firma del familiar responsable</div>
       <div className="text-center mt-1">Aclaración:</div>
@@ -533,7 +395,7 @@ const DocumentoImprimible: React.FC<DocumentoImprimibleProps> = ({
     </div>
 
     {/* Firma del profesional */}
-    <div className="flex flex-col justify-end border p-4 rounded-lg bg-gray-50 h-32">
+    <div className="flex flex-col justify-end  p-4 rounded-lg bg-gray-50 h-32">
       <div className="flex-grow"></div> {/* Espacio superior para firmar */}
       <div className="text-center font-semibold border-t pt-2">Firma y sello del profesional</div>
       <div className="text-center invisible">Aclaración:</div> {/* Espacio vacío para equilibrio */}
