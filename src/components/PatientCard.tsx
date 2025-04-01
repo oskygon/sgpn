@@ -45,16 +45,24 @@ const PatientCard: React.FC<PatientCardProps> = ({ patient, onClick }) => {
     }
   };
 
-  // Formatear fecha
   const formatearFecha = (fecha: string) => {
     try {
       const date = new Date(fecha);
       if (isNaN(date.getTime())) return 'Fecha no válida';
-      return format(date, 'PPP', { locale: es });
+  
+      // Extraer día, mes y año
+      const dia = date.getDate() +1; // Día del mes (1-31)
+      const mes = date.getMonth() + 1; // Mes (0-11) + 1 para ajustar a 1-12
+      const año = date.getFullYear(); // Año (4 dígitos)
+  
+      // Formatear como "día/mes/año"
+      return `${dia}/${mes}/${año}`;
     } catch (e) {
       return 'Fecha no válida';
     }
   };
+
+
 
   return (
     <div 
@@ -73,7 +81,7 @@ const PatientCard: React.FC<PatientCardProps> = ({ patient, onClick }) => {
             <div className="flex items-center text-sm text-gray-600 dark:text-gray-300">
               <Clock className="w-4 h-4 mr-2 text-medical-500 dark:text-gray-400" />
               <span>
-                {formatearFecha(patient.fechaNacimiento)} • {calcularEdad(patient.fechaNacimiento)}
+                {formatearFecha(patient.fechaNacimiento)}
               </span>
             </div>
             <div className="flex items-center text-sm text-gray-600 dark:text-gray-300">
