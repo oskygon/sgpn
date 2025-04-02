@@ -9,6 +9,9 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Separator } from '@/components/ui/separator';
 import { format, differenceInDays, parseISO } from 'date-fns';
 import DocumentoImprimible from '@/components/DocumentoImprimible';
+import BotonFlotanteGuardar from '@/components/BotonFlotanteGuardar';
+
+
 
 const NuevoPaciente = () => {
   const navigate = useNavigate();
@@ -1127,6 +1130,12 @@ const vacunacionPesquisa = (
                 <X className="w-4 h-4 mr-2" />
                 Cancelar
               </Button>
+               {/* Botón flotante para guardar */}
+                          <div className="container mx-auto p-4 pb-20">
+                 
+                    
+                    <BotonFlotanteGuardar onClick={saving} saving={saving} />
+                  </div>
               
               <Button
                 type="submit"

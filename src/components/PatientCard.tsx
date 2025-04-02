@@ -2,8 +2,7 @@
 import React from 'react';
 import { Clock, FileText, User } from 'lucide-react';
 import { Paciente } from '../services/db';
-import { format } from 'date-fns';
-import { es } from 'date-fns/locale';
+import { formatearFecha } from '../utils/formatearFecha';
 
 interface PatientCardProps {
   patient: Paciente;
@@ -12,49 +11,49 @@ interface PatientCardProps {
 
 const PatientCard: React.FC<PatientCardProps> = ({ patient, onClick }) => {
   // Calcular edad
-  const calcularEdad = (fechaNacimiento: string) => {
-    try {
-      const hoy = new Date();
-      const fechaNac = new Date(fechaNacimiento);
+  // const calcularEdad = (fechaNacimiento: string) => {
+  //   try {
+  //     const hoy = new Date();
+  //     const fechaNac = new Date(fechaNacimiento);
       
-      if (isNaN(fechaNac.getTime())) return 'Fecha no válida';
+  //     if (isNaN(fechaNac.getTime())) return 'Fecha no válida';
       
-      const edad = hoy.getFullYear() - fechaNac.getFullYear();
-      const mes = hoy.getMonth() - fechaNac.getMonth();
+  //     const edad = hoy.getFullYear() - fechaNac.getFullYear();
+  //     const mes = hoy.getMonth() - fechaNac.getMonth();
       
-      if (mes < 0 || (mes === 0 && hoy.getDate() < fechaNac.getDate())) {
-        return `${edad - 1} años`;
-      }
+  //     if (mes < 0 || (mes === 0 && hoy.getDate() < fechaNac.getDate())) {
+  //       return `${edad - 1} años`;
+  //     }
       
-      if (edad === 0) {
-        const meses = hoy.getMonth() - fechaNac.getMonth() + 
-          (hoy.getDate() < fechaNac.getDate() ? -1 : 0) + 
-          (hoy.getMonth() < fechaNac.getMonth() ? 12 : 0);
+  //     if (edad === 0) {
+  //       const meses = hoy.getMonth() - fechaNac.getMonth() + 
+  //         (hoy.getDate() < fechaNac.getDate() ? -1 : 0) + 
+  //         (hoy.getMonth() < fechaNac.getMonth() ? 12 : 0);
         
-        if (meses === 0) {
-          const dias = Math.floor((hoy.getTime() - fechaNac.getTime()) / (1000 * 60 * 60 * 24));
-          return `${dias} días`;
-        }
+  //       if (meses === 0) {
+  //         const dias = Math.floor((hoy.getTime() - fechaNac.getTime()) / (1000 * 60 * 60 * 24));
+  //         return `${dias} días`;
+  //       }
         
-        return `${meses} meses`;
-      }
+  //       return `${meses} meses`;
+  //     }
       
-      return `${edad} años`;
-    } catch (e) {
-      return 'Error en fecha';
-    }
-  };
+  //     return `${edad} años`;
+  //   } catch (e) {
+  //     return 'Error en fecha';
+  //   }
+  // };
 
   // Formatear fecha
-  const formatearFecha = (fecha: string) => {
-    try {
-      const date = new Date(fecha);
-      if (isNaN(date.getTime())) return 'Fecha no válida';
-      return format(date, 'PPP', { locale: es });
-    } catch (e) {
-      return 'Fecha no válida';
-    }
-  };
+  // const formatearFecha = (fecha: string) => {
+  //   try {
+  //     const date = new Date(fecha);
+  //     if (isNaN(date.getTime())) return 'Fecha no válida';
+  //     return format(date, 'PPP', { locale: es });
+  //   } catch (e) {
+  //     return 'Fecha no válida';
+  //   }
+  // };
 
   return (
     <div 
@@ -73,7 +72,7 @@ const PatientCard: React.FC<PatientCardProps> = ({ patient, onClick }) => {
             <div className="flex items-center text-sm text-gray-600 dark:text-gray-300">
               <Clock className="w-4 h-4 mr-2 text-medical-500 dark:text-gray-400" />
               <span>
-                {formatearFecha(patient.fechaNacimiento)} • {calcularEdad(patient.fechaNacimiento)}
+                {formatearFecha(patient.fechaNacimiento)}
               </span>
             </div>
             <div className="flex items-center text-sm text-gray-600 dark:text-gray-300">
