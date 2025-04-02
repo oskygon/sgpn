@@ -10,6 +10,7 @@ import { Separator } from '@/components/ui/separator';
 import { format } from 'date-fns';
 import DocumentoImprimible from '@/components/DocumentoImprimible';
 import { calcularPorcentajeDiferenciaPeso } from '../utils/pesoUtils';
+import BotonFlotanteGuardar from '@/components/BotonFlotanteGuardar';
 
 
 
@@ -1100,6 +1101,13 @@ const EditarPaciente = () => {
                 
               </div>
             </div>
+
+      {/* Botón flotante para guardar */}
+            <div className="container mx-auto p-4 pb-20">
+   
+      
+      <BotonFlotanteGuardar onClick={saving} saving={saving} />
+    </div>
 
             {/* Botones de acción */}
             <div className="flex justify-end space-x-4 mt-8">

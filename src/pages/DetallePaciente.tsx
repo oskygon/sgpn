@@ -18,6 +18,7 @@ import { GiDoctorFace,GiSwordBreak,GiNotebook, GiScalpel } from "react-icons/gi"
 import { FaUserDoctor,FaRegAddressCard, FaHandsHoldingChild } from "react-icons/fa6";
 import { CiMobile4 } from "react-icons/ci";
 import { MdFace3 } from "react-icons/md";
+import { formatearFecha } from '../utils/formatearFecha';
 
 const DetallePaciente = () => {
   const { id } = useParams<{ id: string }>();
@@ -52,22 +53,22 @@ const DetallePaciente = () => {
 
 
 
-  const formatearFecha = (fecha: string) => {
-    try {
-      const date = new Date(fecha);
-      if (isNaN(date.getTime())) return 'Fecha no válida';
+  // const formatearFecha = (fecha: string) => {
+  //   try {
+  //     const date = new Date(fecha);
+  //     if (isNaN(date.getTime())) return 'Fecha no válida';
   
-      // Extraer día, mes y año
-      const dia = date.getDate() +1; // Día del mes (1-31)
-      const mes = date.getMonth() + 1; // Mes (0-11) + 1 para ajustar a 1-12
-      const año = date.getFullYear(); // Año (4 dígitos)
+  //     // Extraer día, mes y año
+  //     const dia = date.getDate() +1; // Día del mes (1-31)
+  //     const mes = date.getMonth() + 1; // Mes (0-11) + 1 para ajustar a 1-12
+  //     const año = date.getFullYear(); // Año (4 dígitos)
   
-      // Formatear como "día/mes/año"
-      return `${dia}/${mes}/${año}`;
-    } catch (e) {
-      return 'Fecha no válida';
-    }
-  };
+  //     // Formatear como "día/mes/año"
+  //     return `${dia}/${mes}/${año}`;
+  //   } catch (e) {
+  //     return 'Fecha no válida';
+  //   }
+  // };
 
 
 
