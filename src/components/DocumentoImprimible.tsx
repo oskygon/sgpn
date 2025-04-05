@@ -190,7 +190,7 @@ const DocumentoImprimible: React.FC<DocumentoImprimibleProps> = ({
       { etiqueta: "Sexo", valor: paciente.sexo === 'M' ? 'Masculino' : paciente.sexo === 'F' ? 'Femenino' : paciente.sexo || '-' },
       { etiqueta: "Historia Clínica", valor: paciente.numeroHistoriaClinica || '-' }
     ].map(({ etiqueta, valor }, index) => (
-      <div key={index} className="flex flex-col items-start border p-2 rounded-lg bg-gray-50">
+      <div key={index} className="flex flex-col items-start  p-2 rounded-lg bg-gray-50">
         <span className="font-semibold text-gray-700">{etiqueta}:</span>
         <span className="text-gray-600">{valor}</span>
       </div>
@@ -208,7 +208,7 @@ const DocumentoImprimible: React.FC<DocumentoImprimibleProps> = ({
       { etiqueta: "Talla", valor: paciente.talla ? `${paciente.talla} cm` : '-' },
       { etiqueta: "PC", valor: paciente.perimetroCefalico ? `${paciente.perimetroCefalico} cm` : '-' }
     ].map(({ etiqueta, valor }, index) => (
-      <div key={index} className="flex flex-col items-start border p-2 rounded-lg bg-gray-50">
+      <div key={index} className="flex flex-col items-start  p-2 rounded-lg bg-gray-50">
         <span className="font-semibold text-gray-700">{etiqueta}:</span>
         <span className="text-gray-600">{valor}</span>
       </div>
@@ -230,7 +230,7 @@ const DocumentoImprimible: React.FC<DocumentoImprimibleProps> = ({
       { etiqueta: "Líquido Amniótico", valor: paciente.liquidoAmniotico || '-' },
       { etiqueta: "Clasificación del RN", valor: paciente.clasificacion || '-' }
     ].map(({ etiqueta, valor }, index) => (
-      <div key={index} className="flex flex-col items-start border p-2 rounded-lg bg-gray-50">
+      <div key={index} className="flex flex-col items-start  p-2 rounded-lg bg-gray-50">
         <span className="font-semibold text-gray-700">{etiqueta}:</span>
         <span className="text-gray-600">{valor}</span>
       </div>
@@ -262,7 +262,7 @@ const DocumentoImprimible: React.FC<DocumentoImprimibleProps> = ({
           : 'No' 
       }
     ].map(({ etiqueta, valor }, index) => (
-      <div key={index} className="flex flex-col items-start border p-2 rounded-lg bg-gray-50">
+      <div key={index} className="flex flex-col items-start  p-2 rounded-lg bg-gray-50">
         <span className="font-semibold text-gray-700">{etiqueta}:</span>
         <span className="text-gray-600">{valor || '-'}</span>
       </div>
@@ -283,7 +283,7 @@ const DocumentoImprimible: React.FC<DocumentoImprimibleProps> = ({
       { etiqueta: "Hematocrito", valor: paciente.hematocritoValor ? `${paciente.hematocritoValor}%` : '-' },
       { etiqueta: "Otros laboratorios", valor: paciente.laboratorios }
     ].map(({ etiqueta, valor }, index) => (
-      <div key={index} className="flex flex-col items-start border p-2 rounded-lg bg-gray-50">
+      <div key={index} className="flex flex-col items-start p-2 rounded-lg bg-gray-50">
         <span className="font-semibold text-gray-700">{etiqueta}:</span>
         <span className="text-gray-600">{valor || '-'}</span>
       </div>
@@ -310,10 +310,10 @@ const DocumentoImprimible: React.FC<DocumentoImprimibleProps> = ({
       { etiqueta: "EGB", valor: paciente.egb, fecha: paciente?.fechaEGB },
       { etiqueta: "Profilaxis ATB", valor: paciente.profilaxisATB, fecha: null }
     ].map(({ etiqueta, valor, fecha }, index) => (
-      <div key={index} className="flex flex-col items-start border p-2 rounded-lg bg-gray-50">
+      <div key={index} className="flex flex-col items-start  p-2 rounded-lg bg-gray-50">
         <span className="font-semibold text-gray-700">{etiqueta}:</span>
         <span className="text-gray-600">{valor || '-'}</span>
-        <span className="text-gray-500 text-sm">{fecha ? formatearFecha(fecha) : '-'}</span>
+        <span className="text-gray-500">{fecha ? formatearFecha(fecha) : '-'}</span>
       </div>
     ))}
   </div>
@@ -330,7 +330,7 @@ const DocumentoImprimible: React.FC<DocumentoImprimibleProps> = ({
         { etiqueta: "Peso Egreso", valor: `${paciente.pesoEgreso || '-'} g` },
         { etiqueta: "% descenso", valor: calcularPorcentajeDiferenciaPeso() }
       ].map(({ etiqueta, valor }, index) => (
-        <div key={index} className="flex flex-col items-start border p-2 rounded-lg bg-gray-50">
+        <div key={index} className="flex flex-col items-start  p-2 rounded-lg bg-gray-50">
           <span className="font-semibold text-gray-700">{etiqueta}:</span>
           <span className="text-gray-600">{valor}</span>
         </div>
